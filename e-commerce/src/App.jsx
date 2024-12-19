@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Home from "./Components/Home";
-import Footer from "./Components/Footer";
-import Navbar from "./Components/Navbar"
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [category, setCategory] = useState("all"); 
