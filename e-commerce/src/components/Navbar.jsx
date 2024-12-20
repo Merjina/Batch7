@@ -1,3 +1,4 @@
+// Updated Navbar component
 import React from 'react';
 import '../styles/Navbar.css';
 
@@ -5,13 +6,34 @@ const Navbar = ({ setCategory }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <a href="/">E-Shop</a>
+        <a href="/" onClick={() => setCategory("all")}>E-Shop</a>
       </div>
       <ul className="navbar-links">
-        <li><a href="/" onClick={() => setCategory("all")}>Home</a></li>
-        <li><a href="/shop" onClick={() => setCategory("men")}>Men</a></li>
-        <li><a href="/about" onClick={() => setCategory("women")}>Women</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("all")}>
+            Home
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("men's clothing")}>
+            Men
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("women's clothing")}>
+            Women
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("electronics")}>
+            Electronics
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("jewelery")}>
+            Jewelry
+          </button>
+        </li>
       </ul>
       <div className="navbar-cart">
         <a href="/cart">
