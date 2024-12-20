@@ -40,9 +40,16 @@ function Home() {
           <button
             className="add-to-cart-button"
             onClick={() => handleAddToCart(item)}
+        
           >
+
             Add to Cart
           </button>
+      <button 
+      className="add-to-wishlist-button">
+        <i className='fas fa-heart'> </i>
+        Add to wishlist
+        </button>
         </div>
       ))}
     </div>
