@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Navbar.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ setCategory }) => {
   return (
@@ -14,7 +15,9 @@ const Navbar = ({ setCategory }) => {
         <li><a href="/contact">Contact</a></li>
       </ul>
       <div>
-      <i className="fas fa-heart"></i> Wishlist
+      <Link to="/wishlist"> {/* Navigate to wishlist */}
+          <i className="fas fa-heart"></i> Wishlist
+        </Link>
       </div>
       <div className="navbar-cart">
         <a href="/cart">

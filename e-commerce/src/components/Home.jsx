@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Home.css';
 
-function Home() {
+function Home({ wishliststate, setWishliststate }) {
   const [data, setData] = useState([]);
   const [category,setCategory] = useState("all"); 
   const [error, setError] = useState(null);
-
   const dataFetch = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
@@ -28,7 +27,16 @@ function Home() {
     
     console.log(`${item.title} added to cart`);
   };
-
+const handleWishlist = (item) => {
+  console.log(`${item.title} added to wishlist`)
+  if (!wishliststate.find((wishlistItem) => wishlistItem.id === item.id)) {
+    const updatedWishlist = [...wishliststate, item];
+    setWishliststate(updatedWishlist);
+    console.log("Updated Wishlist:", updatedWishlist);
+  } else {
+    console.log(`${item.title} is already in the wishlist`);
+  }
+}
   return (
     <div className="product-container">
       {error && <p className="error-message">Error: {error.message}</p>}
@@ -40,16 +48,15 @@ function Home() {
           <button
             className="add-to-cart-button"
             onClick={() => handleAddToCart(item)}
-        
           >
-
             Add to Cart
           </button>
-      <button 
-      className="add-to-wishlist-button">
-        <i className='fas fa-heart'> </i>
-        Add to wishlist
-        </button>
+          <button 
+          className="add-to-wishlist-button"
+          onClick={() => handleWishlist(item)}>
+            <i className='fas fa-heart'> </i>
+            Add to wishlist
+            </button>
         </div>
       ))}
     </div>
