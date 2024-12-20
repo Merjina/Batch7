@@ -43,6 +43,7 @@ function Home() {
           >
             Add to Cart
           </button>
+          
         </div>
       ))}
     </div>
