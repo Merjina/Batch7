@@ -66,13 +66,14 @@ function Login() {
       </div>
 
       <div className="inputs">
-      <InputField
+        {action==="Login"?<div></div>:<InputField
           icon={user_icon}
           type="name"
           placeholder="Name"
           value={user}
           onChange={(e) => setUser(e.target.value)}
-        />
+        />}
+      
 
         <InputField
           icon={email_icon}
@@ -93,9 +94,11 @@ function Login() {
 
       {error && <div className="error-message">{error}</div>}
 
-      <div className="forgot-password">
+      {action==="Sign Up"?<div></div>: <div className="forgot-password">
         Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>
+      </div>}
+
+     
 
       <div className="submit-container">
         <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>
