@@ -9,14 +9,12 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 .navbar-logo a {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
   color: #333;
 }
-
 
 .navbar-links {
   list-style: none;
@@ -36,7 +34,6 @@
 .navbar-links li a:hover {
   color: #007bff;
 }
-
 
 .navbar-cart a {
     text-decoration: none;
@@ -63,7 +60,31 @@
     display: none; 
   }
 
-  .navbar-cart {
-    margin-left: auto;
+  .navbar-login a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    position: relative;
+    margin-right: 10px;
   }
+    .navbar-cart {
+      margin-left: auto;
+    }
+
+  }
+
+.navbar-button {
+  background: transparent;
+  border: none;
+  font-family: 'Arial', sans-serif; /* Change to your preferred font */
+  font-size: 16px; /* Adjust as needed */
+  color: #333; /* Change color as per design */
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-button:hover {
+  color: #555; /* Hover color */
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle hover effect */
 }
