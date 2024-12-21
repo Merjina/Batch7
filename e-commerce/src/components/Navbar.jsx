@@ -1,6 +1,7 @@
 // Updated Navbar component
 import React from 'react';
 import '../styles/Navbar.css';
+import Login from './Login';
 
 const Navbar = ({ setCategory }) => {
   return (
@@ -9,6 +10,7 @@ const Navbar = ({ setCategory }) => {
         <a href="/" onClick={() => setCategory("all")}>E-Shop</a>
       </div>
       <ul className="navbar-links">
+
         <li>
           <button className="navbar-button" onClick={() => setCategory("all")}>
             Home
@@ -34,10 +36,18 @@ const Navbar = ({ setCategory }) => {
             Jewelry
           </button>
         </li>
+
+       
+        <li><a href="/login" onClick={Login}>Login</a></li>
+
       </ul>
+     
+
+     
       <div className="navbar-cart">
         <a href="/cart">
           🛒 <span className="cart-count">0</span>
+          
         </a>
       </div>
     </nav>
