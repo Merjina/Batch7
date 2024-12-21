@@ -16,9 +16,7 @@ function App() {
         <Navbar setCategory={setCategory} /> {/* Pass the setCategory function */}
 
         <Routes>
-          <Route path="/" element={<Home
-            loginstate={loginstate}
-            setLoginstate={setLoginstate} />} />
+          <Route path="/" element={<Home loginstate={loginstate} setLoginstate={setLoginstate} />} />
           <Route path="/login" element={<Login loginstate={loginstate} setLoginstate={setLoginstate}/> }/>
           
         </Routes>
