@@ -13,7 +13,12 @@ const Navbar = ({ setCategory }) => {
         <li><a href="/shop" onClick={() => setCategory("men")}>Men</a></li>
         <li><a href="/about" onClick={() => setCategory("women")}>Women</a></li>
         <li><a href="/contact">Contact</a></li>
-        <li><a href="login" onClick={Login}>Login</a></li>
+        
+
+        <div className="navbar-button">
+            <a href="/login" onClick={"Login"}> Login
+            </a> {/* Use Link for routing */}
+          </div>
       </ul>
       
 
