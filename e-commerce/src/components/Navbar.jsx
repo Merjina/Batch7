@@ -13,9 +13,18 @@ const Navbar = ({ setCategory }) => {
         <li><a href="/about" onClick={() => setCategory("women")}>Women</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
+      <div className="navbar-login">
+        <a href="/login">
+           <input type="button" value="Login" />
+          
+        </a>
+      </div>
+
+     
       <div className="navbar-cart">
         <a href="/cart">
           🛒 <span className="cart-count">0</span>
+          
         </a>
       </div>
     </nav>
