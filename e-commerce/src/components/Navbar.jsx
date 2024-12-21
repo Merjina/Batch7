@@ -35,7 +35,11 @@ const Navbar = ({ setCategory }) => {
           </button>
         </li>
         <li>
-          <Link to="/login">Login</Link> {/* Use Link for routing */}
+          <div className="navbar-button">
+            <Link to="/login"> Login
+            </Link> {/* Use Link for routing */}
+          </div>
+          
         </li>
       </ul>
       <div className="navbar-cart">

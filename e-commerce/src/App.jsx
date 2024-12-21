@@ -17,8 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home category={category} />} /> {/* Fixed JSX syntax */}
           <Route
-            path="/login"
-            element={<Login loginstate={loginstate} setLoginstate={setLoginstate} />}
+            path="/login" element={<Login loginstate={loginstate} setLoginstate={setLoginstate} />}
           />
         </Routes>
 
