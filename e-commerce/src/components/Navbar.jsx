@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Navbar.css';
+import Login from './Login';
 
 const Navbar = ({ setCategory }) => {
   return (
@@ -12,13 +13,9 @@ const Navbar = ({ setCategory }) => {
         <li><a href="/shop" onClick={() => setCategory("men")}>Men</a></li>
         <li><a href="/about" onClick={() => setCategory("women")}>Women</a></li>
         <li><a href="/contact">Contact</a></li>
+        <li><a href="login" onClick={Login}>Login</a></li>
       </ul>
-      <div className="navbar-login">
-        <a href="/login">
-           <input type="button" value="Login" />
-          
-        </a>
-      </div>
+      
 
      
       <div className="navbar-cart">
