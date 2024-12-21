@@ -1,16 +1,14 @@
-// Updated Navbar component
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import '../styles/Navbar.css';
-import Login from './Login';
 
 const Navbar = ({ setCategory }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <a href="/" onClick={() => setCategory("all")}>E-Shop</a>
+        <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
       <ul className="navbar-links">
-
         <li>
           <button className="navbar-button" onClick={() => setCategory("all")}>
             Home
@@ -36,19 +34,14 @@ const Navbar = ({ setCategory }) => {
             Jewelry
           </button>
         </li>
-
-       
-        <li><a href="/login" onClick={Login}>Login</a></li>
-
+        <li>
+          <Link to="/login">Login</Link> {/* Use Link for routing */}
+        </li>
       </ul>
-     
-
-     
       <div className="navbar-cart">
-        <a href="/cart">
+        <Link to="/cart">
           🛒 <span className="cart-count">0</span>
-          
-        </a>
+        </Link>
       </div>
     </nav>
   );
