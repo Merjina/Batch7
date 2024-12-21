@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" element={<Login loginstate={loginstate} setLoginstate={setLoginstate}/> }/>
           
         </Routes>
-       <Login/>
+      
         <Footer />
         
 
