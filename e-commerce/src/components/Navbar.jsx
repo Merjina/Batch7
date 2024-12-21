@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import '../styles/Navbar.css';
 import Login from './Login';
 
@@ -6,23 +7,43 @@ const Navbar = ({ setCategory }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <a href="/">E-Shop</a>
+        <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
       <ul className="navbar-links">
-        <li><a href="/" onClick={() => setCategory("all")}>Home</a></li>
-        <li><a href="/shop" onClick={() => setCategory("men")}>Men</a></li>
-        <li><a href="/about" onClick={() => setCategory("women")}>Women</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="login" onClick={Login}>Login</a></li>
-      </ul>
-      
 
-     
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("all")}>
+            Home
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("men's clothing")}>
+            Men
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("women's clothing")}>
+            Women
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("electronics")}>
+            Electronics
+          </button>
+        </li>
+        <li>
+          <button className="navbar-button" onClick={() => setCategory("jewelery")}>
+            Jewelry
+          </button>
+        </li>
+        <li>
+          <Link to="/login">Login</Link> {/* Use Link for routing */}
+        </li>
+      </ul>
       <div className="navbar-cart">
-        <a href="/cart">
+        <Link to="/cart">
           🛒 <span className="cart-count">0</span>
-          
-        </a>
+        </Link>
       </div>
     </nav>
   );
