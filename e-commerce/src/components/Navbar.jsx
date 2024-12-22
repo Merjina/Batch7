@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for routing
 import '../styles/Navbar.css';
+import Login from './Login';
 
 const Navbar = ({ setCategory }) => {
   return (
@@ -9,6 +10,7 @@ const Navbar = ({ setCategory }) => {
         <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
       <ul className="navbar-links">
+
         <li>
           <button className="navbar-button" onClick={() => setCategory("all")}>
             Home
