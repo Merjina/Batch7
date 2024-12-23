@@ -23,7 +23,7 @@ const Home = ({ category }) => {
 
   useEffect(() => {
     dataFetch();
-  }, [category]); // Refetch data when the category changes
+  }, [category]); 
 
   const handleAddToCart = (item) => {
     console.log(`${item.title} added to cart`);

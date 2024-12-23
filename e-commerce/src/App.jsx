@@ -6,11 +6,12 @@ import Footer from './components/Footer';
 const App = () => {
   const [category, setCategory] = useState("all");
 
+
   return (
     <div>
-      <Navbar setCategory={setCategory} />
+      <Navbar setCategory={setCategory}/>
       <Home category={category} />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
