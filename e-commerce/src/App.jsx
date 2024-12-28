@@ -25,7 +25,9 @@ function App() {
     });
   };
 
+
   return (
+
     <Router>
       <div>
         <Navbar setCategory={setCategory} cartItems={cartItems} />
@@ -39,6 +41,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+
   );
 }
 

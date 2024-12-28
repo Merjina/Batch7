@@ -23,6 +23,7 @@ function Home({ wishliststate, setWishliststate,category, addToCart }) {
 
   useEffect(() => {
     dataFetch();
+
   }, [category]);
 
   const handleAddToCart = (item) => {
