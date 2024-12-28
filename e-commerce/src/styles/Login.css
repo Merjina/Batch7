@@ -32,9 +32,9 @@
 }
 
 .input-container img {
-  width: 24px; /* Adjust width for the icon */
-  height: 24px; /* Adjust height for the icon */
-  margin-right: 10px; /* Add spacing between the icon and input */
+  width: 24px; 
+  height: 24px; 
+  margin-right: 10px; 
 }
 
 .input-container input {
