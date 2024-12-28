@@ -6,10 +6,12 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Wishlist from "./components/Wishlist";
+import AdminPage from "./components/Admin"; // Import Admin Page
+
 function App() {
   const [category, setCategory] = useState("all");
   const [cartItems, setCartItems] = useState([]);
-  const[wishliststate,setWishliststate]=useState([]);
+  const [wishliststate, setWishliststate] = useState([]);
   const addToCart = (item) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
@@ -25,23 +27,20 @@ function App() {
     });
   };
 
-
   return (
-
     <Router>
       <div>
         <Navbar setCategory={setCategory} cartItems={cartItems} />
         <Routes>
-          <Route path="/" element={<Home wishliststate={wishliststate}
-          setWishliststate={setWishliststate} category={category} addToCart={addToCart} />} />
+          <Route path="/" element={<Home wishliststate={wishliststate} setWishliststate={setWishliststate} category={category} addToCart={addToCart} />} />
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/wishlist" element={<Wishlist wishliststate={wishliststate} setWishliststate={setWishliststate}/>} />
+          <Route path="/wishlist" element={<Wishlist wishliststate={wishliststate} setWishliststate={setWishliststate} />} />
+          <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
         </Routes>
         <Footer />
       </div>
     </Router>
-
   );
 }
 

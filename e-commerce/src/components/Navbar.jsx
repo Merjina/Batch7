@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = ({ setCategory, cartItems }) => {
-  // Calculate total items in the cart
+ 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (

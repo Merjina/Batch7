@@ -21,7 +21,6 @@ const InputField = ({ icon, type, placeholder, value, onChange }) => (
 );
 
 function Login() {
- 
   const users = [
     { username: 'admin@gmail.com', password: 'password', role: 'admin' },
     { username: 'user1@gmail.com', password: 'pass1', role: 'user' },
@@ -31,32 +30,29 @@ function Login() {
     { username: 'user5@gmail.com', password: 'pass5', role: 'user' },
   ];
 
-  const [user,setUser] = useState('');
+  const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const[action,setAction] = useState("Login")
+  const [action, setAction] = useState("Login");
 
   const handleLogin = () => {
     setError('');
-    const user = users.find(
+    const foundUser = users.find(
       (u) => u.username === email && u.password === password
     );
 
-    if (user) {
-      if (user.role === 'admin') {
+    if (foundUser) {
+      if (foundUser.role === 'admin') {
         navigate('/admin');
       } else {
-        navigate('/user');
+        navigate('/user'); 
       }
     } else {
       setError('Invalid email or password');
     }
-
-    
-
   };
 
   return (
@@ -66,14 +62,15 @@ function Login() {
       </div>
 
       <div className="inputs">
-        {action==="Login"?<div></div>:<InputField
-          icon={user_icon}
-          type="name"
-          placeholder="Name"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />}
-      
+        {action === "Sign Up" && (
+          <InputField
+            icon={user_icon}
+            type="name"
+            placeholder="Name"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        )}
 
         <InputField
           icon={email_icon}
@@ -94,17 +91,23 @@ function Login() {
 
       {error && <div className="error-message">{error}</div>}
 
-      {action==="Sign Up"?<div></div>: <div className="forgot-password">
-        Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>}
-
-     
+      {action === "Sign Up" ? null : (
+        <div className="forgot-password">
+          Lost Password? <span className="forgot-password__link">Click Here</span>
+        </div>
+      )}
 
       <div className="submit-container">
-        <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>
+        <button
+          className={action === "Login" ? "submit" : "submit gray"}
+          onClick={handleLogin}
+        >
           Login
         </button>
-        <button className={action==="Sign Up"?"submit gray":"submit"} onClick={() =>{setAction("Sign Up")}}>
+        <button
+          className={action === "Sign Up" ? "submit" : "submit gray"}
+          onClick={() => setAction("Sign Up")}
+        >
           Sign Up
         </button>
       </div>
