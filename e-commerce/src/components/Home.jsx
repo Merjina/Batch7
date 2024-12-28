@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Home.css';
 
-const Home = ({ category }) => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+const Home = ({ category, addToCart }) => {
+  const [data, setData] = useState([]); 
+  const [error, setError] = useState(null); 
 
   const dataFetch = async () => {
     try {
@@ -21,17 +21,22 @@ const Home = ({ category }) => {
     }
   };
 
+
   useEffect(() => {
     dataFetch();
-  }, [category]); // Refetch data when the category changes
+  }, [category]);
 
   const handleAddToCart = (item) => {
+    addToCart(item);
     console.log(`${item.title} added to cart`);
   };
 
   return (
     <div className="product-container">
+      {/* Show error message if API call fails */}
       {error && <p className="error-message">Error: {error.message}</p>}
+
+      {/* Map through the fetched data and render product cards */}
       {data.map((item) => (
         <div key={item.id} className="product-card">
           <img src={item.image} alt={item.title} className="product-image" />
@@ -43,7 +48,6 @@ const Home = ({ category }) => {
           >
             Add to Cart
           </button>
-          
         </div>
       ))}
     </div>
