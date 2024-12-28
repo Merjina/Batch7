@@ -6,25 +6,31 @@ function Home({ wishliststate, setWishliststate }) {
   const [data, setData] = useState([]);
   const [category,setCategory] = useState("all"); 
   const [error, setError] = useState(null);
+const Home = ({ category, addToCart }) => {
+  const [data, setData] = useState([]); 
+  const [error, setError] = useState(null);
   const dataFetch = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
-      const filteredData = category === "all" 
-        ? response.data
-        : response.data.filter(item => item.category.toLowerCase() === category.toLowerCase());
-      const sortedData = filteredData.sort((a, b) => a.price - b.price);
-      setData(sortedData);
+      const filteredData =
+        category === "all"
+          ? response.data
+          : response.data.filter((item) =>
+              item.category.toLowerCase() === category.toLowerCase()
+            );
+      setData(filteredData);
     } catch (error) {
       setError(error);
     }
   };
 
+
   useEffect(() => {
     dataFetch();
-  }, [category]); 
+  }, [category]);
 
   const handleAddToCart = (item) => {
-    
+    addToCart(item);
     console.log(`${item.title} added to cart`);
   };
 const handleWishlist = (item) => {
@@ -39,11 +45,14 @@ const handleWishlist = (item) => {
 }
   return (
     <div className="product-container">
+      {/* Show error message if API call fails */}
       {error && <p className="error-message">Error: {error.message}</p>}
+
+      {/* Map through the fetched data and render product cards */}
       {data.map((item) => (
         <div key={item.id} className="product-card">
-          <img src={item.image} alt="product" className="product-image" />
-          <h2 className="product-category">{item.category}</h2>
+          <img src={item.image} alt={item.title} className="product-image" />
+          <h3 className="product-title">{item.title}</h3>
           <p className="product-price">Price: ${item.price.toFixed(2)}</p>
           <button
             className="add-to-cart-button"
@@ -61,6 +70,6 @@ const handleWishlist = (item) => {
       ))}
     </div>
   );
-}
+};
 
 export default Home;
