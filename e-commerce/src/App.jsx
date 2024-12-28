@@ -6,13 +6,13 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Wishlist from "./components/Wishlist";
+import AdminPage from "./components/Admin"; // Import Admin Page
 
 function App() {
   const [category, setCategory] = useState("all");
   const [cartItems, setCartItems] = useState([]);
   const [wishliststate, setWishliststate] = useState([]);
   const [currentUser, setCurrentUser] = useState(null); // State for logged-in user
-
   const addToCart = (item) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
@@ -56,6 +56,8 @@ function App() {
                 wishliststate={wishliststate}
                 setWishliststate={setWishliststate}
               />
+                    <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+       
             }
           />
         </Routes>

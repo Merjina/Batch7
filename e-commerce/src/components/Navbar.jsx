@@ -4,6 +4,7 @@ import '../styles/Navbar.css';
 import Category from './Category';
 
 const Navbar = ({ setCategory, cartItems }) => {
+
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
