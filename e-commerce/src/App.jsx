@@ -13,6 +13,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [wishliststate, setWishliststate] = useState([]);
   const [currentUser, setCurrentUser] = useState(null); // State for logged-in user
+
   const addToCart = (item) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
@@ -56,10 +57,9 @@ function App() {
                 wishliststate={wishliststate}
                 setWishliststate={setWishliststate}
               />
-                    <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
-       
             }
           />
+          <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
         </Routes>
         <Footer />
       </div>
