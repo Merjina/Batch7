@@ -43,6 +43,7 @@ const Home = ({ category }) => {
           >
             Add to Cart
           </button>
+          
         </div>
       ))}
     </div>
