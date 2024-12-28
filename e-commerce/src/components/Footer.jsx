@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        {/* About Us Section */}
+
         <div className="footer-section">
           <h4>About Us</h4>
           <p>We are an e-commerce platform offering the best products at the best prices. Shop with us for quality and convenience.</p>
         </div>
 
-        {/* Customer Service Section */}
+
         <div className="footer-section">
           <h4>Customer Service</h4>
           <ul>
@@ -22,7 +22,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Follow Us Section */}
+
         <div className="footer-section">
           <h4>Follow Us</h4>
           <ul>
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Footer Bottom Section */}
+   
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Zuko. All rights reserved.</p>
       </div>
