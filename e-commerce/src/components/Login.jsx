@@ -20,22 +20,16 @@ const InputField = ({ icon, type, placeholder, value, onChange }) => (
   </div>
 );
 
-
 function Login({ setCurrentUser }) {
-
   const users = [
     { username: 'admin@gmail.com', password: 'password', role: 'admin' },
     { username: 'user1@gmail.com', password: 'pass1', role: 'user' },
   ];
 
-  const [user, setUser] = useState('');
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
-  const [action, setAction] = useState("Login");
 
   const handleLogin = () => {
     setError('');
@@ -44,12 +38,15 @@ function Login({ setCurrentUser }) {
     );
 
     if (foundUser) {
+      setCurrentUser(foundUser); // Update the current user
       if (foundUser.role === 'admin') {
-        navigate('/admin');
+        navigate('/admin'); // Navigate to Admin page
       } else {
-        navigate('/'); 
+        navigate('/'); // Navigate to Home page
       }
-
+    } else {
+      setError('Invalid email or password');
+    }
   };
 
   return (
@@ -57,9 +54,7 @@ function Login({ setCurrentUser }) {
       <div className="header">
         <div className="text">Login</div>
       </div>
-
       <div className="inputs">
-
         <InputField
           icon={email_icon}
           type="email"
@@ -75,29 +70,15 @@ function Login({ setCurrentUser }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-
       {error && <div className="error-message">{error}</div>}
-
-        <div className="forgot-password">
-          Lost Password? <span className="forgot-password__link">Click Here</span>
-        </div>
-      
-
+      <div className="forgot-password">
+        Lost Password? <span className="forgot-password__link">Click Here</span>
+      </div>
       <div className="submit-container">
-        <button
-          className={action === "Login" ? "submit" : "submit gray"}
-          onClick={handleLogin}
-        >
+        <button className="submit" onClick={handleLogin}>
           Login
         </button>
-        <button
-          className={action === "Sign Up" ? "submit" : "submit gray"}
-          onClick={() => setAction("Sign Up")}
-        >
-          Sign Up
-        </button>
-
-     
+      </div>
     </div>
   );
 }
