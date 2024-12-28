@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
-import Login from './Login';
 
-const Navbar = ({ setCategory }) => {
+const Navbar = ({ setCategory, cartItems }) => {
+  // Calculate total items in the cart
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
       <ul className="navbar-links">
-
         <li>
           <button className="navbar-button" onClick={() => setCategory("all")}>
             Home
@@ -37,12 +38,17 @@ const Navbar = ({ setCategory }) => {
           </button>
         </li>
         <li>
-          <Link to="/login">Login</Link> {/* Use Link for routing */}
+          <Link to="/login">Login</Link>
         </li>
       </ul>
+      <div>
+      <Link to="/wishlist"> {/* Navigate to wishlist */}
+          <i className="fas fa-heart"></i> Wishlist
+        </Link>
+      </div>
       <div className="navbar-cart">
         <Link to="/cart">
-          🛒 <span className="cart-count">0</span>
+          🛒 <span className="cart-count">{totalItems}</span> {/* Display total items */}
         </Link>
       </div>
     </nav>

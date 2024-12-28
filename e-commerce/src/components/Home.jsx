@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Home.css';
 
-const Home = ({ category }) => {
-  const [data, setData] = useState([]);
+function Home({ wishliststate, setWishliststate,category, addToCart }) {
+  const [data, setData] = useState([]); 
   const [error, setError] = useState(null);
-
   const dataFetch = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
@@ -21,17 +20,32 @@ const Home = ({ category }) => {
     }
   };
 
+
   useEffect(() => {
     dataFetch();
-  }, [category]); 
+
+  }, [category]);
 
   const handleAddToCart = (item) => {
+    addToCart(item);
     console.log(`${item.title} added to cart`);
   };
-
+const handleWishlist = (item) => {
+  console.log(`${item.title} added to wishlist`)
+  if (!wishliststate.find((wishlistItem) => wishlistItem.id === item.id)) {
+    const updatedWishlist = [...wishliststate, item];
+    setWishliststate(updatedWishlist);
+    console.log("Updated Wishlist:", updatedWishlist);
+  } else {
+    console.log(`${item.title} is already in the wishlist`);
+  }
+}
   return (
     <div className="product-container">
+      {/* Show error message if API call fails */}
       {error && <p className="error-message">Error: {error.message}</p>}
+
+      {/* Map through the fetched data and render product cards */}
       {data.map((item) => (
         <div key={item.id} className="product-card">
           <img src={item.image} alt={item.title} className="product-image" />
@@ -43,7 +57,12 @@ const Home = ({ category }) => {
           >
             Add to Cart
           </button>
-          
+          <button 
+          className="add-to-wishlist-button"
+          onClick={() => handleWishlist(item)}>
+            <i className='fas fa-heart'> </i>
+            Add to wishlist
+            </button>
         </div>
       ))}
     </div>
