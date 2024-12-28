@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Home.css';
 
-function Home({ wishliststate, setWishliststate }) {
-  const [data, setData] = useState([]);
-  const [category,setCategory] = useState("all"); 
-  const [error, setError] = useState(null);
-const Home = ({ category, addToCart }) => {
+function Home({ wishliststate, setWishliststate,category, addToCart }) {
   const [data, setData] = useState([]); 
   const [error, setError] = useState(null);
   const dataFetch = async () => {

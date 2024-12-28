@@ -30,12 +30,10 @@ function App() {
       <div>
         <Navbar setCategory={setCategory} cartItems={cartItems} />
         <Routes>
-          <Route path="/" element={<Home category={category} addToCart={addToCart} />} />
+          <Route path="/" element={<Home wishliststate={wishliststate}
+          setWishliststate={setWishliststate} category={category} addToCart={addToCart} />} />
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
           <Route path="/login" element={<Login />} />
-             <Route path="/" element={<Home 
-          wishliststate={wishliststate}
-          setWishliststate={setWishliststate} />} />
           <Route path="/wishlist" element={<Wishlist wishliststate={wishliststate} setWishliststate={setWishliststate}/>} />
         </Routes>
         <Footer />
