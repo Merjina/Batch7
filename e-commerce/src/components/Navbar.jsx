@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ setCategory, cartItems }) => {
   // Calculate total items in the cart
@@ -41,6 +42,11 @@ const Navbar = ({ setCategory, cartItems }) => {
           <Link to="/login">Login</Link>
         </li>
       </ul>
+      <div>
+      <Link to="/wishlist"> {/* Navigate to wishlist */}
+          <i className="fas fa-heart"></i> Wishlist
+        </Link>
+      </div>
       <div className="navbar-cart">
         <Link to="/cart">
           🛒 <span className="cart-count">{totalItems}</span> {/* Display total items */}
