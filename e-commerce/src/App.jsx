@@ -12,6 +12,7 @@ function App() {
   const [category, setCategory] = useState("all");
   const [cartItems, setCartItems] = useState([]);
   const [wishliststate, setWishliststate] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null); // State for logged-in user
   const addToCart = (item) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
@@ -32,11 +33,33 @@ function App() {
       <div>
         <Navbar setCategory={setCategory} cartItems={cartItems} />
         <Routes>
-          <Route path="/" element={<Home wishliststate={wishliststate} setWishliststate={setWishliststate} category={category} addToCart={addToCart} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                wishliststate={wishliststate}
+                setWishliststate={setWishliststate}
+                category={category}
+                addToCart={addToCart}
+              />
+            }
+          />
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/wishlist" element={<Wishlist wishliststate={wishliststate} setWishliststate={setWishliststate} />} />
-          <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+          <Route
+            path="/login"
+            element={<Login setCurrentUser={setCurrentUser} />}
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <Wishlist
+                wishliststate={wishliststate}
+                setWishliststate={setWishliststate}
+              />
+                    <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+       
+            }
+          />
         </Routes>
         <Footer />
       </div>
