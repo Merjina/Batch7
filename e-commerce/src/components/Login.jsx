@@ -20,29 +20,36 @@ const InputField = ({ icon, type, placeholder, value, onChange }) => (
   </div>
 );
 
+
 function Login({ setCurrentUser }) {
+
   const users = [
     { username: 'admin@gmail.com', password: 'password', role: 'admin' },
     { username: 'user1@gmail.com', password: 'pass1', role: 'user' },
   ];
+
+  const [user, setUser] = useState('');
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const [action, setAction] = useState("Login");
+
   const handleLogin = () => {
     setError('');
-    const user = users.find(
+    const foundUser = users.find(
       (u) => u.username === email && u.password === password
     );
 
-    if (user) {
-      setCurrentUser(user); 
-      navigate('/');
-    } else {
-      setError('Invalid email or password');
-    }
+    if (foundUser) {
+      if (foundUser.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/'); 
+      }
+
   };
 
   return (
@@ -52,6 +59,7 @@ function Login({ setCurrentUser }) {
       </div>
 
       <div className="inputs">
+
         <InputField
           icon={email_icon}
           type="email"
@@ -70,11 +78,26 @@ function Login({ setCurrentUser }) {
 
       {error && <div className="error-message">{error}</div>}
 
+        <div className="forgot-password">
+          Lost Password? <span className="forgot-password__link">Click Here</span>
+        </div>
+      
+
       <div className="submit-container">
-        <button className="submit" onClick={handleLogin}>
+        <button
+          className={action === "Login" ? "submit" : "submit gray"}
+          onClick={handleLogin}
+        >
           Login
         </button>
-      </div>
+        <button
+          className={action === "Sign Up" ? "submit" : "submit gray"}
+          onClick={() => setAction("Sign Up")}
+        >
+          Sign Up
+        </button>
+
+     
     </div>
   );
 }
