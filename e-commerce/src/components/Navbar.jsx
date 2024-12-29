@@ -1,49 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for routing
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
-import Login from './Login';
+import Category from './Category';
 
-const Navbar = ({ setCategory }) => {
+const Navbar = ({ setCategory, cartItems }) => {
+
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <nav className="navbar">
+     
       <div className="navbar-logo">
-        <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
+        <Link to="/" onClick={() => setCategory("all")}>ZUKO!
+         </Link>
       </div>
-      <ul className="navbar-links">
 
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("all")}>
-            Home
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("men's clothing")}>
-            Men
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("women's clothing")}>
-            Women
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("electronics")}>
-            Electronics
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("jewelery")}>
-            Jewelry
-          </button>
-        </li>
-        <li>
-          <Link to="/login">Login</Link> {/* Use Link for routing */}
-        </li>
-      </ul>
-      <div className="navbar-cart">
-        <Link to="/cart">
-          🛒 <span className="cart-count">0</span>
+
+      <div className="navbar-links">
+        <Category setCategory={setCategory} />
+      </div>
+
+      <div className="navbar-right">
+        <Link to="/login">
+        <i class="fa-solid fa-user"></i></Link>
+        <Link to="/wishlist">
+          <i className="fas fa-heart"></i> 
         </Link>
+        <div className="navbar-cart">
+          <Link to="/cart">
+          <i class="fa-solid fa-cart-shopping"></i> <span className="cart-count">{totalItems}</span>
+          </Link>
+        </div>
       </div>
     </nav>
   );
