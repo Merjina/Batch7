@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import action from 'react';
+import user, {setUser}  from 'react';
+import setAction from 'react';
 import '../styles/Login.css';
 import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
@@ -89,7 +92,7 @@ function Login({ setCurrentUser }) {
      
 
       <div className="login-submit-container">
-        <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}
+        <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>
           Login
         </button>
       </div>

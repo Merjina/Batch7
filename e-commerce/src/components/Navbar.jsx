@@ -29,7 +29,7 @@ const Navbar = ({ setCategory, cartItems }) => {
         <Link to="/login">
         <i class="fa-solid fa-user"></i></Link>
         <Link to="/wishlist">
-          <i className="fas fa-heart"></i> 
+          <i className="fas fa-heart"></i> </Link>
 
         <li>
           <button className="navbar-button" onClick={() => setCategory("all")}>
@@ -61,7 +61,7 @@ const Navbar = ({ setCategory, cartItems }) => {
             <Link to ="/login">Login</Link>
           </button>
         </li>
-        </ul>
+        </div>
 
        
       
