@@ -34,6 +34,7 @@ function App() {
       <div>
         <Navbar setCategory={setCategory} cartItems={cartItems} />
         <Routes>
+
           <Route
             path="/"
             element={
@@ -45,7 +46,10 @@ function App() {
               />
             }
           />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+          <Route
+  path="/cart"
+  element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+/>
           <Route
             path="/login"
             element={<Login setCurrentUser={setCurrentUser} />}
