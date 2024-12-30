@@ -31,10 +31,12 @@
   border-bottom: 2px solid #ddd;
 }
 
+
 .login-input-container img {
   width: 24px; /* Adjust width for the icon */
   height: 24px; /* Adjust height for the icon */
   margin-right: 10px; /* Add spacing between the icon and input */
+
 }
 
 .login-input-container input {
