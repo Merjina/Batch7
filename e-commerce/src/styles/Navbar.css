@@ -1,0 +1,157 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #91AC8F;
+  padding: 20px 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  font-size: 28px; 
+  font-weight: 900; 
+  color: white;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+  color: #4B5945;
+  cursor: pointer;
+  font-family: 'Cursive', sans-serif; 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar-links li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a,
+.navbar-links button {
+  color: #4B5945;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px; 
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+  color: #20271d; 
+}
+
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.navbar-right a {
+  color: #4B5945;
+  text-decoration: none;
+  font-size: 16px;
+  
+.navbar-cart a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    position: relative;
+  }
+  
+  .cart-count {
+    background-color: red;
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+  
+
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; 
+  }
+
+ 
+    .navbar-cart {
+      margin-left: auto;
+    }
+
+  }
+
+.navbar-button {
+  background: transparent;
+  border: none;
+  font-family: 'Arial', sans-serif; /* Change to your preferred font */
+  font-size: 16px; /* Adjust as needed */
+  color: #333; /* Change color as per design */
+
+  cursor: pointer;
+}
+
+.navbar-right a:hover {
+  color: #20271d;
+}
+
+.navbar-cart {
+  position: relative;
+}
+
+.navbar-cart a {
+  color: #4B5945;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+}
+
+.cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  position: absolute;
+  top: -10px; 
+  right: -10px; 
+}
+
+.category-container {
+  display: flex;
+  gap: 15px;
+}
+
+.category-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px; 
+  transition: color 0.3s ease; 
+}
+
+.category-link:hover {
+  color: #20271d;
+}
+

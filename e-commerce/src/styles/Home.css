@@ -1,0 +1,103 @@
+.product-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #cfd7cc;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative; 
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.product-category {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4B5945;
+}
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  margin: 20px;
+  text-align: center;
+}
+
+
+.add-to-cart-button,
+.add-to-wishlist-button {
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+}
+
+
+.add-to-wishlist-button {
+  color: red;
+  left: 10px;
+}
+
+
+.add-to-cart-button {
+  color: green;
+  right: 10px;
+}
+
+.add-to-cart-button:hover {
+  color: #006400;
+}
+
+.add-to-wishlist-button:hover {
+  color: darkred;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #4B5945; 
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 50px auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
