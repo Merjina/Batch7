@@ -51,6 +51,7 @@ function Login({ setCurrentUser }) {
 
   return (
 
+
     <div className="login-container">
       <div className="login-header">
         <div className="login-text">{action}</div>
@@ -64,6 +65,7 @@ function Login({ setCurrentUser }) {
           value={user}
           onChange={(e) => setUser(e.target.value)}
         />}
+
         <InputField
           icon={email_icon}
           type="email"
@@ -81,15 +83,12 @@ function Login({ setCurrentUser }) {
       </div>
       {error && <div className="error-message">{error}</div>}
 
-
-      {action==="Sign Up"?<div></div>: <div className="login-forgot-password">
+      <div className="forgot-password">
         Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>}
+      </div>
+      <div className="submit-container">
+        <button className="submit" onClick={handleLogin}>
 
-     
-
-      <div className="login-submit-container">
-        <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}
           Login
         </button>
       </div>
