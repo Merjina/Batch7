@@ -1,13 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
-import Login from './Login';
 
-const Navbar = ({ setCategory }) => {
+import Category from './Category';
+
+const Navbar = ({ setCategory, cartItems }) => {
+
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+
+
+
   return (
     <nav className="navbar">
+     
       <div className="navbar-logo">
-        <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
+        <Link to="/" onClick={() => setCategory("all")}>ZUKO!
+         </Link>
       </div>
       <ul className="navbar-links">
 
@@ -37,6 +46,7 @@ const Navbar = ({ setCategory }) => {
         <Link to="/cart">
           🛒 <span className="cart-count">0</span>
         </Link>
+
       </div>
     </nav>
   );
