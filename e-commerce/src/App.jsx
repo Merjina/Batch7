@@ -34,6 +34,7 @@ function App() {
       <div>
         <Navbar setCategory={setCategory} cartItems={cartItems} />
         <Routes>
+
           <Route
             path="/"
             element={
