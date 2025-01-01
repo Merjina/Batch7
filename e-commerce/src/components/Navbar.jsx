@@ -15,6 +15,7 @@ const Navbar = ({ setCategory, cartItems }) => {
         </Link>
       </div>
 
+
       {/* Category Links */}
       <div className="navbar-links">
         <Category setCategory={setCategory} />

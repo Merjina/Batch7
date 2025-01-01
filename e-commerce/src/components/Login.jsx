@@ -62,13 +62,16 @@ function Login({ setCurrentUser }) {
     setAction('Login'); // Redirect back to login after sign-up
   };
 
+
   return (
+
     <div className="login-container">
       <div className="login-header">
         <div className="login-text">{action}</div>
       </div>
 
       <div className="login-inputs">
+
         {action === 'Sign Up' && (
           <InputField
             icon={user_icon}
@@ -78,7 +81,7 @@ function Login({ setCurrentUser }) {
             onChange={(e) => setUser(e.target.value)}
           />
         )}
-        <InputField
+      <InputField
           icon={email_icon}
           type="email"
           placeholder="Email"
