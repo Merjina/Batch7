@@ -7,12 +7,12 @@ import email_icon from '../components/Assets/email.png';
 import password_icon from '../components/Assets/password.png';
 
 const InputField = ({ icon, type, placeholder, value, onChange }) => (
-  <div className="input-container">
+  <div className="login-input-container">
     <img src={icon} alt="" className="input-container__icon" />
     <input
       type={type}
       placeholder={placeholder}
-      className="input-container__input"
+      className="login-input-container__input"
       value={value}
       onChange={onChange}
       aria-label={placeholder}
@@ -28,6 +28,8 @@ function Login({ setCurrentUser }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(''); // For Sign-Up
+  const [action, setAction] = useState('Login'); // Tracks whether in 'Login' or 'Sign Up'
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -49,12 +51,33 @@ function Login({ setCurrentUser }) {
     }
   };
 
+  const handleSignUp = () => {
+    // Example Sign-Up logic
+    if (!email || !password || !user) {
+      setError('All fields are required for Sign-Up');
+      return;
+    }
+    setError('');
+    console.log('Sign-Up Successful:', { user, email, password });
+    setAction('Login'); // Redirect back to login after sign-up
+  };
+
   return (
-    <div className="container">
-      <div className="header">
-        <div className="text">Login</div>
+    <div className="login-container">
+      <div className="login-header">
+        <div className="login-text">{action}</div>
       </div>
-      <div className="inputs">
+
+      <div className="login-inputs">
+        {action === 'Sign Up' && (
+          <InputField
+            icon={user_icon}
+            type="text"
+            placeholder="Name"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        )}
         <InputField
           icon={email_icon}
           type="email"
@@ -70,14 +93,40 @@ function Login({ setCurrentUser }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+
       {error && <div className="error-message">{error}</div>}
-      <div className="forgot-password">
-        Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>
-      <div className="submit-container">
-        <button className="submit" onClick={handleLogin}>
-          Login
+
+      {action === 'Login' && (
+        <div className="login-forgot-password">
+          Lost Password? <span className="forgot-password__link">Click Here</span>
+        </div>
+      )}
+
+      <div className="login-submit-container">
+        <button
+          className="submit"
+          onClick={action === 'Login' ? handleLogin : handleSignUp}
+        >
+          {action}
         </button>
+      </div>
+
+      <div className="login-toggle-action">
+        {action === 'Login' ? (
+          <span>
+            Don't have an account?{' '}
+            <span className="toggle-link" onClick={() => setAction('Sign Up')}>
+              Sign Up
+            </span>
+          </span>
+        ) : (
+          <span>
+            Already have an account?{' '}
+            <span className="toggle-link" onClick={() => setAction('Login')}>
+              Login
+            </span>
+          </span>
+        )}
       </div>
     </div>
   );
