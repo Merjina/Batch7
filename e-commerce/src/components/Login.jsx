@@ -31,6 +31,8 @@ function Login({ setCurrentUser }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(''); // For Sign-Up
+  const [action, setAction] = useState('Login'); // Tracks whether in 'Login' or 'Sign Up'
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -52,6 +54,18 @@ function Login({ setCurrentUser }) {
     }
   };
 
+  const handleSignUp = () => {
+    // Example Sign-Up logic
+    if (!email || !password || !user) {
+      setError('All fields are required for Sign-Up');
+      return;
+    }
+    setError('');
+    console.log('Sign-Up Successful:', { user, email, password });
+    setAction('Login'); // Redirect back to login after sign-up
+  };
+
+
   return (
 
     <div className="login-container">
@@ -60,14 +74,17 @@ function Login({ setCurrentUser }) {
       </div>
 
       <div className="login-inputs">
-        {action==="Login"?<div></div>:<InputField
-          icon={user_icon}
-          type="name"
-          placeholder="Name"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />}
-        <InputField
+
+        {action === 'Sign Up' && (
+          <InputField
+            icon={user_icon}
+            type="text"
+            placeholder="Name"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        )}
+      <InputField
           icon={email_icon}
           type="email"
           placeholder="Email"
@@ -82,19 +99,42 @@ function Login({ setCurrentUser }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+
       {error && <div className="error-message">{error}</div>}
 
-
-      {action==="Sign Up"?<div></div>: <div className="login-forgot-password">
-        Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>}
-
-     
+      {action === 'Login' && (
+        <div className="login-forgot-password">
+          Lost Password? <span className="forgot-password__link">Click Here</span>
+        </div>
+      )}
 
       <div className="login-submit-container">
-        <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>
-          Login
+
+        <button
+          className="submit"
+          onClick={action === 'Login' ? handleLogin : handleSignUp}
+        >
+          {action}
+
         </button>
+      </div>
+
+      <div className="login-toggle-action">
+        {action === 'Login' ? (
+          <span>
+            Don't have an account?{' '}
+            <span className="toggle-link" onClick={() => setAction('Sign Up')}>
+              Sign Up
+            </span>
+          </span>
+        ) : (
+          <span>
+            Already have an account?{' '}
+            <span className="toggle-link" onClick={() => setAction('Login')}>
+              Login
+            </span>
+          </span>
+        )}
       </div>
     </div>
   );

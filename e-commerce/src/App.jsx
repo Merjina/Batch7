@@ -1,15 +1,20 @@
+
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
+import Login from "./components/Login";
+import Searchbar from "./components/Searchbar";
+
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Wishlist from "./components/Wishlist";
-import AdminPage from "./components/Admin"; // Import Admin Page
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 function App() {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState('all');
   const [cartItems, setCartItems] = useState([]);
   const [wishliststate, setWishliststate] = useState([]);
   const [currentUser, setCurrentUser] = useState(null); // State for logged-in user
@@ -63,7 +68,12 @@ function App() {
               />
             }
           />
+
+          <Route path="/category/:category" element={<category/>}/>
+          <Route path="/Search"element={<Searchbar/>}/>
+
           <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+
         </Routes>
         <Footer />
       </div>
