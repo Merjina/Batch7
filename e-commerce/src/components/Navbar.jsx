@@ -32,7 +32,52 @@ const Navbar = ({ setCategory, cartItems }) => {
           <i className="fas fa-heart"></i>
         </Link>
 
-      
+        {/* Navigation Buttons */}
+        <ul className="navbar-buttons">
+          <li>
+            <button className="navbar-button" onClick={() => setCategory("all")}>
+              Home
+            </button>
+          </li>
+          <li>
+            <button
+              className="navbar-button"
+              onClick={() => setCategory("men's clothing")}
+            >
+              Men
+            </button>
+          </li>
+          <li>
+            <button
+              className="navbar-button"
+              onClick={() => setCategory("women's clothing")}
+            >
+              Women
+            </button>
+          </li>
+          <li>
+            <button
+              className="navbar-button"
+              onClick={() => setCategory("electronics")}
+            >
+              Electronics
+            </button>
+          </li>
+          <li>
+            <button
+              className="navbar-button"
+              onClick={() => setCategory("jewelery")}
+            >
+              Jewelry
+            </button>
+          </li>
+          <li>
+            <button className="navbar-button">
+              <Link to="/login">Login</Link>
+            </button>
+          </li>
+        </ul>
+
         {/* Cart Section */}
         <div className="navbar-cart">
           <Link to="/cart">
