@@ -6,6 +6,10 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Searchbar from "./components/Searchbar";
 
+import Cart from "./components/Cart";
+import Login from "./components/Login";
+import Wishlist from "./components/Wishlist";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
