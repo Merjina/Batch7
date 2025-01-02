@@ -25,6 +25,7 @@ const Navbar = ({ setCategory, cartItems }) => {
       <div className="navbar-right">
         {/* User Icon */}
         <Link to="/login">
+
           <i className="fa-solid fa-user"></i>
         </Link>
 
