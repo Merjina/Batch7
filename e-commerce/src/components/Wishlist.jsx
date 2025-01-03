@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styles/Wishlist.css';
+import '../styles/Navbar.css';
 
-function Wishlist({ wishliststate }) { // Destructure wishliststate prop
+function Wishlist({ wishliststate }) {
   return (
     <div className="wishlist-container">
       <h1>Your Wishlist</h1>
