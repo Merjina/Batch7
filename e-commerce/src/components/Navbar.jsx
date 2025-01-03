@@ -17,42 +17,11 @@ const Navbar = ({ setCategory, cartItems, setSearchQuery }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-
         <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
-      <ul className="navbar-links">
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("all")}>
-            Home
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("men's clothing")}>
-            Men
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("women's clothing")}>
-            Women
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("electronics")}>
-            Electronics
-          </button>
-        </li>
-        <li>
-          <button className="navbar-button" onClick={() => setCategory("jewelery")}>
-            Jewelry
-          </button>
-        </li>
-        <li>
-
-
-      <div className="navbar-links">
+      <div className="navbar-category">
         <Category setCategory={setCategory} />
       </div>
-
       <div className="navbar-search">
         <input
           type="text"
@@ -62,7 +31,6 @@ const Navbar = ({ setCategory, cartItems, setSearchQuery }) => {
           className="search-input"
         />
       </div>
-
       <div className="navbar-right">
         <Link to="/login">
           <i className="fa-solid fa-user"></i>
