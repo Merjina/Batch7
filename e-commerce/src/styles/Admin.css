@@ -1,0 +1,106 @@
+
+.Admin-input {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .Add-product-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .Add-product-button:hover {
+    background-color: #0056b3;
+  }
+
+  .Admin-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  
+  .Admin-product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    position: relative;
+  }
+  
+  .Admin-product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .Admin-product-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .Admin-product-description {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  .Admin-product-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    margin: 10px 0;
+  }
+  
+  .Admin-product-edit-button,
+  .Admin-product-delete-button {
+    border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  }
+  
+  .Admin-product-delete-button {
+   color: #dc3545;
+    left: 10px;
+  }
+  
+  .Admin-product-delete-button:hover {
+   color: #a71d2a;
+    left: 10px;
+  }
+  
+  .Admin-product-edit-button {
+    color: #ffc107; 
+    right: 10px;
+  }
+  
+  .Admin-product-edit-button:hover {
+    color: #cc9a06;
+    right: 10px;
+  }
+  
