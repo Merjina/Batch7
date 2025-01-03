@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Cart from "./components/Cart";
-import Login from "./components/Login";
-import Wishlist from "./components/Wishlist";
-import AdminPage from "./components/Admin"; // Import Admin Page
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Cart from './components/Cart';
+import Login from './components/Login';
+import Wishlist from './components/Wishlist';
+import AdminPage from './components/Admin';
 
 function App() {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState('all');
   const [cartItems, setCartItems] = useState([]);
   const [wishliststate, setWishliststate] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null); // State for logged-in user
+  const [searchQuery, setSearchQuery] = useState('');
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -32,7 +32,11 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar setCategory={setCategory} cartItems={cartItems} />
+        <Navbar
+          setCategory={setCategory}
+          cartItems={cartItems}
+          setSearchQuery={setSearchQuery}
+        />
         <Routes>
           <Route
             path="/"
@@ -42,14 +46,12 @@ function App() {
                 setWishliststate={setWishliststate}
                 category={category}
                 addToCart={addToCart}
+                searchQuery={searchQuery}
               />
             }
           />
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-          <Route
-            path="/login"
-            element={<Login setCurrentUser={setCurrentUser} />}
-          />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/wishlist"
             element={
@@ -59,7 +61,7 @@ function App() {
               />
             }
           />
-          <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
         <Footer />
       </div>
