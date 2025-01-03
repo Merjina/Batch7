@@ -49,22 +49,18 @@ function Login({ setCurrentUser }) {
     }
   };
 
+  
+
   return (
 
 
     <div className="login-container">
       <div className="login-header">
-        <div className="login-text">{action}</div>
+        <div className="login-text">Login</div>
       </div>
 
       <div className="login-inputs">
-        {action==="Login"?<div></div>:<InputField
-          icon={user_icon}
-          type="name"
-          placeholder="Name"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />}
+        
 
         <InputField
           icon={email_icon}
@@ -88,7 +84,6 @@ function Login({ setCurrentUser }) {
       </div>
       <div className="submit-container">
         <button className="submit" onClick={handleLogin}>
-
           Login
         </button>
       </div>
