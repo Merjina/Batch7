@@ -54,11 +54,6 @@ function Login({ setCurrentUser }) {
     }
   };
 
-<<<<<<< HEAD
-  
-
-  return (
-=======
   const handleSignUp = () => {
     // Example Sign-Up logic
     if (!email || !password || !user) {
@@ -69,7 +64,6 @@ function Login({ setCurrentUser }) {
     console.log('Sign-Up Successful:', { user, email, password });
     setAction('Login'); // Redirect back to login after sign-up
   };
->>>>>>> d00dd3b1a12e3d8e3a4be3aa1753f7a4d4e640c1
 
 
   return (
@@ -80,10 +74,6 @@ function Login({ setCurrentUser }) {
       </div>
 
       <div className="login-inputs">
-<<<<<<< HEAD
-        
-=======
->>>>>>> d00dd3b1a12e3d8e3a4be3aa1753f7a4d4e640c1
 
         {action === 'Sign Up' && (
           <InputField
@@ -112,14 +102,6 @@ function Login({ setCurrentUser }) {
 
       {error && <div className="error-message">{error}</div>}
 
-<<<<<<< HEAD
-      <div className="forgot-password">
-        Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>
-      <div className="submit-container">
-        <button className="submit" onClick={handleLogin}>
-          Login
-=======
       {action === 'Login' && (
         <div className="login-forgot-password">
           Lost Password? <span className="forgot-password__link">Click Here</span>
@@ -134,7 +116,6 @@ function Login({ setCurrentUser }) {
         >
           {action}
 
->>>>>>> d00dd3b1a12e3d8e3a4be3aa1753f7a4d4e640c1
         </button>
       </div>
 
