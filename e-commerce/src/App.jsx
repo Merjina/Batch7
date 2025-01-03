@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Cart from "./components/Cart";
-import Login from "./components/Login";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Cart from './components/Cart';
+import Login from './components/Login';
+import Wishlist from './components/Wishlist';
+import AdminPage from './components/Admin';
 
 function App() {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState('all');
   const [cartItems, setCartItems] = useState([]);
+  const [wishliststate, setWishliststate] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  // Add a state for the current user if needed
+  const [currentUser, setCurrentUser] = useState(null);
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -28,11 +34,42 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar setCategory={setCategory} cartItems={cartItems} />
+        <Navbar
+          setCategory={setCategory}
+          cartItems={cartItems}
+          setSearchQuery={setSearchQuery}
+        />
         <Routes>
-          <Route path="/" element={<Home category={category} addToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                wishliststate={wishliststate}
+                setWishliststate={setWishliststate}
+                category={category}
+                addToCart={addToCart}
+                searchQuery={searchQuery}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/login"
+            element={<Login setCurrentUser={setCurrentUser} />}
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <Wishlist
+                wishliststate={wishliststate}
+                setWishliststate={setWishliststate}
+              />
+            }
+          />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
         <Footer />
       </div>
