@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -7,7 +8,6 @@ import Cart from './components/Cart';
 import Login from './components/Login';
 import Wishlist from './components/Wishlist';
 import AdminPage from './components/Admin';
-
 function App() {
   const [category, setCategory] = useState('all');
   const [cartItems, setCartItems] = useState([]);
