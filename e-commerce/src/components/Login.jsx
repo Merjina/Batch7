@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import action from 'react';
+import user, {setUser}  from 'react';
+import setAction from 'react';
 import '../styles/Login.css';
+import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
-
 import user_icon from '../components/Assets/user.png';
 import email_icon from '../components/Assets/email.png';
 import password_icon from '../components/Assets/password.png';
 
 const InputField = ({ icon, type, placeholder, value, onChange }) => (
-  <div className="input-container">
+  <div className="login-input-container">
     <img src={icon} alt="" className="input-container__icon" />
     <input
       type={type}
       placeholder={placeholder}
-      className="input-container__input"
+      className="login-input-container__input"
       value={value}
       onChange={onChange}
       aria-label={placeholder}
@@ -20,69 +23,74 @@ const InputField = ({ icon, type, placeholder, value, onChange }) => (
   </div>
 );
 
-function Login() {
- 
+function Login({ setCurrentUser }) {
   const users = [
     { username: 'admin@gmail.com', password: 'password', role: 'admin' },
     { username: 'user1@gmail.com', password: 'pass1', role: 'user' },
-    { username: 'user2@gmail.com', password: 'pass2', role: 'user' },
-    { username: 'user3@gmail.com', password: 'pass3', role: 'user' },
-    { username: 'user4@gmail.com', password: 'pass4', role: 'user' },
-    { username: 'user5@gmail.com', password: 'pass5', role: 'user' },
   ];
 
-  const [user,setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(''); // For Sign-Up
+  const [action, setAction] = useState('Login'); // Tracks whether in 'Login' or 'Sign Up'
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const[action,setAction] = useState("Login")
-
   const handleLogin = () => {
     setError('');
-    const user = users.find(
+    const foundUser = users.find(
       (u) => u.username === email && u.password === password
     );
 
-    if (user) {
-      if (user.role === 'admin') {
-        navigate('/admin');
+    if (foundUser) {
+      setCurrentUser(foundUser); // Update the current user
+      if (foundUser.role === 'admin') {
+        navigate('/admin'); // Navigate to Admin page
       } else {
-        navigate('/user');
+        navigate('/'); // Navigate to Home page
       }
     } else {
       setError('Invalid email or password');
     }
-
-    
-
   };
 
+  const handleSignUp = () => {
+    // Example Sign-Up logic
+    if (!email || !password || !user) {
+      setError('All fields are required for Sign-Up');
+      return;
+    }
+    setError('');
+    console.log('Sign-Up Successful:', { user, email, password });
+    setAction('Login'); // Redirect back to login after sign-up
+  };
+
+
   return (
-    <div className="container">
-      <div className="header">
-        <div className="text">{action}</div>
+
+    <div className="login-container">
+      <div className="login-header">
+        <div className="login-text">{action}</div>
       </div>
 
-      <div className="inputs">
-        {action==="Login"?<div></div>:<InputField
-          icon={user_icon}
-          type="name"
-          placeholder="Name"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />}
-      
+      <div className="login-inputs">
 
-        <InputField
+        {action === 'Sign Up' && (
+          <InputField
+            icon={user_icon}
+            type="text"
+            placeholder="Name"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        )}
+      <InputField
           icon={email_icon}
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <InputField
           icon={password_icon}
           type="password"
@@ -94,19 +102,39 @@ function Login() {
 
       {error && <div className="error-message">{error}</div>}
 
-      {action==="Sign Up"?<div></div>: <div className="forgot-password">
-        Lost Password? <span className="forgot-password__link">Click Here</span>
-      </div>}
+      {action === 'Login' && (
+        <div className="login-forgot-password">
+          Lost Password? <span className="forgot-password__link">Click Here</span>
+        </div>
+      )}
 
-     
+      <div className="login-submit-container">
 
-      <div className="submit-container">
-        <button className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>
-          Login
+        <button
+          className="submit"
+          onClick={action === 'Login' ? handleLogin : handleSignUp}
+        >
+          {action}
+
         </button>
-        <button className={action==="Sign Up"?"submit gray":"submit"} onClick={() =>{setAction("Sign Up")}}>
-          Sign Up
-        </button>
+      </div>
+
+      <div className="login-toggle-action">
+        {action === 'Login' ? (
+          <span>
+            Don't have an account?{' '}
+            <span className="toggle-link" onClick={() => setAction('Sign Up')}>
+              Sign Up
+            </span>
+          </span>
+        ) : (
+          <span>
+            Already have an account?{' '}
+            <span className="toggle-link" onClick={() => setAction('Login')}>
+              Login
+            </span>
+          </span>
+        )}
       </div>
     </div>
   );
