@@ -68,8 +68,9 @@
   text-decoration: none;
   font-size: 16px;
 
+
 }
-.navbar-cart a {
+ .navbar-cart a {
     text-decoration: none;
     color: #333;
     font-size: 1.2rem;
@@ -156,3 +157,17 @@
   color: #20271d;
 }
 
+.navbar-search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 1rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

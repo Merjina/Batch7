@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import action from 'react';
+import user, {setUser}  from 'react';
+import setAction from 'react';
 import '../styles/Login.css';
 import '../styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
@@ -62,13 +65,16 @@ function Login({ setCurrentUser }) {
     setAction('Login'); // Redirect back to login after sign-up
   };
 
+
   return (
+
     <div className="login-container">
       <div className="login-header">
-        <div className="login-text">{action}</div>
+        <div className="login-text">Login</div>
       </div>
 
       <div className="login-inputs">
+
         {action === 'Sign Up' && (
           <InputField
             icon={user_icon}
@@ -78,7 +84,7 @@ function Login({ setCurrentUser }) {
             onChange={(e) => setUser(e.target.value)}
           />
         )}
-        <InputField
+      <InputField
           icon={email_icon}
           type="email"
           placeholder="Email"
@@ -103,11 +109,13 @@ function Login({ setCurrentUser }) {
       )}
 
       <div className="login-submit-container">
+
         <button
           className="submit"
           onClick={action === 'Login' ? handleLogin : handleSignUp}
         >
           {action}
+
         </button>
       </div>
 
