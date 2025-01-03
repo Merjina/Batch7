@@ -5,16 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Searchbar from "./components/Searchbar";
-<<<<<<< HEAD
 import Cart from "./components/Cart";
 import Wishlist from "./components/Wishlist";
-=======
-
-import Cart from "./components/Cart";
-import Login from "./components/Login";
-import Wishlist from "./components/Wishlist";
-
->>>>>>> d00dd3b1a12e3d8e3a4be3aa1753f7a4d4e640c1
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminPage from "./components/Admin";
 
