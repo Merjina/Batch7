@@ -7,6 +7,8 @@ import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Wishlist from "./components/Wishlist";
 import AdminPage from "./components/Admin"; // Import Admin Page
+import Payment from "./components/Payment";
+
 
 function App() {
   const [category, setCategory] = useState("all");
@@ -64,10 +66,13 @@ function App() {
             }
           />
           <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+          <Route path="/Payment" element={<Payment />} />
         </Routes>
         <Footer />
       </div>
     </Router>
+    
+    
   );
 }
 
