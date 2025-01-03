@@ -70,7 +70,7 @@ function Login({ setCurrentUser }) {
 
     <div className="login-container">
       <div className="login-header">
-        <div className="login-text">{action}</div>
+        <div className="login-text">Login</div>
       </div>
 
       <div className="login-inputs">

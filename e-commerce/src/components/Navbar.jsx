@@ -17,14 +17,15 @@ const Navbar = ({ setCategory, cartItems, setSearchQuery }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-
         <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
+
+      <div className="navbar-category">
       
-      <div className="navbar-links">
+
+
         <Category setCategory={setCategory} />
       </div>
-
       <div className="navbar-search">
         <input
           type="text"
@@ -34,7 +35,6 @@ const Navbar = ({ setCategory, cartItems, setSearchQuery }) => {
           className="search-input"
         />
       </div>
-
       <div className="navbar-right">
         <Link to="/login">
           <i className="fa-solid fa-user"></i>
