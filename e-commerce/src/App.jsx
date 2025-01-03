@@ -50,9 +50,16 @@ function App() {
               />
             }
           />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-          <Route path="/login" element={<Login />} />
-          <Route
+
+         <Route
+  path="/cart"
+  element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+/>
+         <Route
+            path="/login"
+            element={<Login setCurrentUser={setCurrentUser} />}
+          />
+<Route
             path="/wishlist"
             element={
               <Wishlist
@@ -60,6 +67,7 @@ function App() {
                 setWishliststate={setWishliststate}
               />
             }
+
           />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
