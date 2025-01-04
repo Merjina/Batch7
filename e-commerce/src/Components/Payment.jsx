@@ -49,7 +49,7 @@ const Payment = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Call API to process payment
+    
     console.log('Payment processed!');
   };
 
