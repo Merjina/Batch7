@@ -50,8 +50,10 @@ const Navbar = ({
           <i className="fa-solid fa-user"></i>
         </Link>
         <Link to="/wishlist">
-          <i className="fas fa-heart"></i>
-          <span className="wishlist-count">{wishliststate ? wishliststate.length : 0}</span>
+          <i className="fa-solid fa-heart"></i>
+        <span className="wishlist-count" style={{ color: 'red' }}>{wishliststate ? wishliststate.length : 0}</span>
+
+
         </Link>
         <div className="navbar-cart">
           <Link to="/cart">

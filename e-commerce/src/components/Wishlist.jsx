@@ -5,7 +5,8 @@ import '../styles/Navbar.css';
 
 function Wishlist({ wishliststate, setWishliststate }) {
   const handleRemoveFromWishlist = (itemId) => {
-    setWishliststate(wishliststate.filter((item) => (item.id) !== itemId));
+    setWishliststate(wishliststate.filter((item) => (item.id) !== itemId));<span className="wishlist-count" style={{ color: 'red' }}>{wishliststate ? wishliststate.length : 0}</span>
+
   };
 
   return (
