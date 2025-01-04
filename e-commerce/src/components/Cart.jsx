@@ -3,18 +3,39 @@ import { Link } from 'react-router-dom';
 import '../styles/Cart.css';
 import '../styles/Navbar.css';
 
-
 const Cart = ({ cartItems, setCartItems }) => {
-  const handleRemoveItem = (itemIndex) => {
+  const handleAddItem = (itemIndex) => {
     setCartItems((prevItems) =>
-      prevItems
-        .map((item, index) =>
-          index === itemIndex
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
+      prevItems.map((item, index) =>
+        index === itemIndex
+          ? { 
+              ...item, 
+              quantity: item.quantity + 1,  // Increase quantity
+              price: item.price + item.price // Increase price based on the quantity
+            }
+          : item
+      )
     );
+  };
+  
+
+  const handleSubtractItem = (itemIndex) => {
+    setCartItems((prevItems) =>
+
+      prevItems.map((item, index) =>
+        index === itemIndex
+          ? { 
+              ...item, 
+              quantity: Math.max(1, item.quantity - 1),  // Decrease quantity but prevent below 1
+              price: Math.max(item.price, item.price - item.price / item.quantity) // Decrease price
+            }
+          : item
+      )
+    );
+  };
+
+  const handleRemoveItem = (itemIndex) => {
+    setCartItems((prevItems) => prevItems.filter((_, index) => index !== itemIndex));
   };
 
   const calculateTotal = () =>
@@ -32,6 +53,21 @@ const Cart = ({ cartItems, setCartItems }) => {
                   <h3>{item.title}</h3>
                   <p>Price: ${item.price.toFixed(2)}</p>
                   <p>Quantity: {item.quantity}</p>
+
+                  <div className="quantity-actions">
+                    <button
+                      className="subtract-item-button"
+                      onClick={() => handleSubtractItem(index)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="add-item-button"
+                      onClick={() => handleAddItem(index)}
+                    >
+                      +
+                    </button>
+                  </div>
                   <button
                     className="remove-item-button"
                     onClick={() => handleRemoveItem(index)}
@@ -44,6 +80,7 @@ const Cart = ({ cartItems, setCartItems }) => {
           </div>
           <div className="cart-total">
             <h3>Total: ${calculateTotal().toFixed(2)}</h3>
+
             <Link to="/Payment">
               <button className="Payment-button">Proceed to Payment</button>
             </Link>
@@ -57,9 +94,9 @@ const Cart = ({ cartItems, setCartItems }) => {
 )}
 </div>
 );
+
 };
 
 export default Cart;
-
 
 
