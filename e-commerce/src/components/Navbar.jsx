@@ -40,17 +40,15 @@ const Navbar = ({ setCategory, cartItems, setSearchQuery }) => {
           <i className="fa-solid fa-user"></i>
         </Link>
         <Link to="/wishlist">
-
           <i className="fas fa-heart"></i>
         </Link>
-
         <div className="navbar-cart">
           <Link to="/cart">
             <i className="fa-solid fa-cart-shopping"></i>{' '}
             <span className="cart-count">{totalItems}</span>
           </Link>
         </div>
-      
+      </div>
     </nav>
   );
 };
