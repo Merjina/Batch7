@@ -21,6 +21,7 @@ const Cart = ({ cartItems, setCartItems }) => {
 
   const handleSubtractItem = (itemIndex) => {
     setCartItems((prevItems) =>
+
       prevItems.map((item, index) =>
         index === itemIndex
           ? { 
@@ -39,7 +40,6 @@ const Cart = ({ cartItems, setCartItems }) => {
 
   const calculateTotal = () =>
     cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>
@@ -53,6 +53,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                   <h3>{item.title}</h3>
                   <p>Price: ${item.price.toFixed(2)}</p>
                   <p>Quantity: {item.quantity}</p>
+
                   <div className="quantity-actions">
                     <button
                       className="subtract-item-button"
@@ -79,15 +80,21 @@ const Cart = ({ cartItems, setCartItems }) => {
           </div>
           <div className="cart-total">
             <h3>Total: ${calculateTotal().toFixed(2)}</h3>
+
+            <Link to="/Payment">
+              <button className="Payment-button">Proceed to Payment</button>
+            </Link>
           </div>
         </>
-      ) : (
-        <p>
-          Your cart is empty. <Link to="/">Continue shopping</Link>
-        </p>
-      )}
-    </div>
-  );
+
+) : (
+  <p>
+    Your cart is empty. <Link to="/">Continue shopping</Link>
+  </p>
+)}
+</div>
+);
+
 };
 
 export default Cart;
