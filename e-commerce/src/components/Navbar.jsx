@@ -19,7 +19,11 @@ const Navbar = ({ setCategory, cartItems, setSearchQuery }) => {
       <div className="navbar-logo">
         <Link to="/" onClick={() => setCategory("all")}>E-Shop</Link>
       </div>
+
       <div className="navbar-category">
+      
+
+
         <Category setCategory={setCategory} />
       </div>
       <div className="navbar-search">
