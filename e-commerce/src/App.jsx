@@ -13,6 +13,8 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [wishliststate, setWishliststate] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  // Add a state for the current user if needed
+  const [currentUser, setCurrentUser] = useState(null);
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -50,8 +52,14 @@ function App() {
               />
             }
           />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/login"
+            element={<Login setCurrentUser={setCurrentUser} />}
+          />
           <Route
             path="/wishlist"
             element={
