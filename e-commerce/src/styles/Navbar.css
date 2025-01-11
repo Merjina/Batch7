@@ -122,19 +122,18 @@
 }
 
 .search-input {
-  width: 300px; 
-  padding: 6px 10px;
-  border: 2px solid #5b824a;
-  border-radius: 4px; 
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.search-input::placeholder {
-  color: #91AC8F;
+.wishlist-count {
+  color: red;
+  
+  
 }
-
 .search-input:focus {
   border-color: #20271d;
   box-shadow: 0 0 3px rgba(30, 117, 9, 0.3);
