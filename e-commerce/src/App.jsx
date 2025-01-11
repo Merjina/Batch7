@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -11,7 +10,6 @@ import Wishlist from './components/Wishlist';
 import AdminPage from './components/Admin';
 import Payment from "./components/Payment";
 
-
 function App() {
   const [category, setCategory] = useState('all');
   const [cartItems, setCartItems] = useState([]);
@@ -22,67 +20,66 @@ function App() {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
+      const existingItem = prevItems.find((cartItem) => (item.id) === (item.id));
       if (existingItem) {
-        return prevItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
+        return prevItems.map((cartItem) => (item.id) === (item.id) ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem );
       } else {
         return [...prevItems, { ...item, quantity: 1 }];
       }
     });
   };
 
+  const handleAddToWishlist = (product) => {
+    setWishliststate([...wishliststate, product]);
+  };
+
   return (
     <Router>
       <div>
-        <Navbar
-          setCategory={setCategory}
-          cartItems={cartItems}
-          setSearchQuery={setSearchQuery}
+        <Navbar 
+          setCategory={setCategory} 
+          cartItems={cartItems} 
+          setSearchQuery={setSearchQuery} 
+          wishliststate={wishliststate} 
+          handleAddToWishlist={handleAddToWishlist} 
         />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                wishliststate={wishliststate}
-                setWishliststate={setWishliststate}
-                category={category}
-                addToCart={addToCart}
-                searchQuery={searchQuery}
-              />
-            }
+          <Route 
+            path="/" 
+            element={ 
+              <Home 
+                wishliststate={wishliststate} 
+                setWishliststate={setWishliststate} 
+                category={category} 
+                addToCart={addToCart} 
+                searchQuery={searchQuery} 
+              /> 
+            } 
           />
-          <Route
-            path="/cart"
-            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          <Route 
+            path="/cart" 
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} 
           />
-          <Route
-            path="/login"
-            element={<Login setCurrentUser={setCurrentUser} />}
+          <Route 
+            path="/login" 
+            element={<Login setCurrentUser={setCurrentUser} />} 
           />
-          <Route
-            path="/wishlist"
-            element={
-              <Wishlist
-                wishliststate={wishliststate}
-                setWishliststate={setWishliststate}
-              />
-            }
+          <Route 
+            path="/wishlist" 
+            element={ 
+              <Wishlist 
+                wishliststate={wishliststate} 
+                setWishliststate={setWishliststate} 
+              /> 
+            } 
           />
-
-          <Route path="/admin" element={<AdminPage />} /> {/* Admin Route */}
+          <Route path="/admin" element={<AdminPage />} />
+          {/* Admin Route */}
           <Route path="/Payment" element={<Payment />} />
-
         </Routes>
         <Footer />
       </div>
     </Router>
-    
-    
   );
 }
 
